@@ -56,11 +56,11 @@ function PhotoModal({ open, onClose }: { open: boolean; onClose: () => void }) {
       <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(12px)' }} />
       <div className="relative animate-slide-up" onClick={e => e.stopPropagation()}>
         <div className="rounded-3xl overflow-hidden"
-          style={{ border: '2px solid var(--accent)', boxShadow: '0 0 60px rgba(168,85,247,0.25)', maxWidth: '420px' }}>
+          style={{ border: '1px solid var(--surface-border)', boxShadow: '0 0 60px rgba(0,0,0,0.4)', maxWidth: '420px' }}>
           <img src="/profile.jpg" alt="Ahmad Syamsudin Ihsan" className="w-full h-auto" />
         </div>
         <button onClick={onClose} className="absolute -top-3 -right-3 p-2.5 rounded-full transition hover:scale-110 z-10"
-          style={{ background: 'var(--surface)', border: '1px solid var(--accent)', color: 'var(--text)' }}>
+          style={{ background: 'var(--surface)', border: '1px solid var(--surface-border)', color: 'var(--text)' }}>
           <X className="w-4 h-4" />
         </button>
       </div>
@@ -234,23 +234,23 @@ export default function About() {
                 }} />
               {/* Photo with glass overlay */}
               <div className="relative w-64 h-96 md:w-72 md:h-[27rem] rounded-3xl overflow-hidden transition-transform duration-300 group-hover:scale-105"
-                style={{ border: '3px solid var(--accent)', boxShadow: '0 0 30px rgba(168, 85, 247, 0.2)' }}>
+                style={{ border: '2px solid var(--surface-border)', boxShadow: '0 0 30px rgba(0, 0, 0, 0.3)' }}>
                 <img src="/profile.jpg" alt="Ahmad Syamsudin Ihsan"
                   className="w-full h-full object-cover" />
                 {/* Glass overlay on photo */}
                 <div className="absolute inset-0 rounded-3xl"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 40%, transparent 60%, rgba(168,85,247,0.06) 100%)',
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.03) 100%)',
                     pointerEvents: 'none',
                   }} />
               </div>
               {/* Decorative dashed frame */}
               <div className="absolute -inset-7 rounded-[1.75rem] animate-spin-slow"
-                style={{ border: '1px dashed var(--accent)', opacity: 0.2 }} />
+                style={{ border: '1px dashed var(--surface-border)', opacity: 0.3 }} />
               {/* Click hint */}
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-3 opacity-0 group-hover:opacity-100 transition-opacity">
                 <span className="px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap"
-                  style={{ background: 'var(--surface)', border: '1px solid var(--accent)', color: 'var(--accent)' }}>
+                  style={{ background: 'var(--surface)', border: '1px solid var(--surface-border)', color: 'var(--text-2)' }}>
                   Click to view
                 </span>
               </div>
@@ -274,8 +274,8 @@ export default function About() {
             </div>
             {/* TODO: Replace with your actual Google Drive share link */}
             <a href="https://drive.google.com/file/d/1crUQawzLuhRid_z4tJMqc9J0ChKTXiDD/view?usp=sharing" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-medium transition-all hover:opacity-90 btn-glow"
-              style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent-2))' }}>
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all hover:opacity-90"
+              style={{ background: 'var(--accent)', color: 'var(--surface)' }}>
               <Download className="w-4 h-4" />
               Download CV
             </a>
@@ -327,7 +327,7 @@ export default function About() {
                 <p className="text-sm mb-3" style={{ color: 'var(--accent)' }}>{lang.level}</p>
                 <div className="w-full h-2 rounded-full overflow-hidden" style={{ background: 'var(--surface-card)' }}>
                   <div className="h-full rounded-full transition-all duration-700"
-                    style={{ width: `${lang.percent}%`, background: 'linear-gradient(90deg, var(--accent), var(--accent-2))' }} />
+                    style={{ width: `${lang.percent}%`, background: 'var(--accent)' }} />
                 </div>
                 <p className="text-xs mt-2" style={{ color: 'var(--text-3)' }}>{lang.percent}% proficiency</p>
               </div>

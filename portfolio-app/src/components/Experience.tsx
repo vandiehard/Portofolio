@@ -56,7 +56,7 @@ export default function Experience() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text)' }}>
             Experience & <span className="gradient-text-purple">Education</span>
           </h2>
-          <div className="w-20 h-1 rounded-full mx-auto" style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent-2))' }} />
+          <div className="w-20 h-1 rounded-full mx-auto" style={{ background: 'var(--accent)' }} />
         </div>
 
         {/* Timeline */}

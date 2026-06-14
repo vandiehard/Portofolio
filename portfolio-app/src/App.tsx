@@ -2,6 +2,8 @@ import { ThemeProvider } from './context/ThemeContext'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
+import Gallery from './components/Gallery'
+import TechStack from './components/TechStack'
 import Projects from './components/Projects'
 import Experience from './components/Experience'
 import Contact from './components/Contact'
@@ -13,12 +15,14 @@ export default function App() {
     <ThemeProvider>
       <div className="min-h-screen font-poppins"
         style={{
-          background: 'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(168, 85, 247, 0.07) 0%, transparent 50%), var(--surface)',
+          background: 'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 255, 255, 0.03) 0%, transparent 50%), var(--surface)',
         }}>
         <MouseBubble />
         <Navbar />
         <Hero />
         <About />
+        <Gallery />
+        <TechStack />
         <Projects />
         <Experience />
         <Contact />

@@ -81,7 +81,7 @@ export default function Projects() {
               className="px-5 py-2 rounded-full text-sm font-medium transition-all duration-300"
               style={
                 activeFilter === cat
-                  ? { background: 'linear-gradient(135deg, var(--accent), var(--accent-2))', color: '#fff', boxShadow: '0 4px 15px rgba(168,85,247,0.3)' }
+                  ? { background: 'var(--accent)', color: 'var(--surface)', boxShadow: '0 4px 15px rgba(255,255,255,0.1)' }
                   : { background: 'var(--surface-card)', border: '1px solid var(--surface-border)', color: 'var(--text-2)' }
               }
             >
@@ -102,7 +102,7 @@ export default function Projects() {
               {/* Thumbnail */}
               <div
                 className="h-48 flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg, color-mix(in srgb, var(--accent) 15%, transparent), color-mix(in srgb, var(--accent-2) 15%, transparent))' }}
+                style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02))' }}
               >
                 <Code2 className="w-16 h-16 transition-colors" style={{ color: 'var(--accent)', opacity: 0.3 }} />
               </div>

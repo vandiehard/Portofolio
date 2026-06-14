@@ -33,8 +33,8 @@ export default function MouseBubble() {
 
     function getColors() {
       return themeRef.current === 'light'
-        ? { fill: 'rgba(124, 58, 237, 0.22)', stroke: 'rgba(79, 70, 229, 0.55)' }
-        : { fill: 'rgba(168, 130, 247, 0.35)', stroke: 'rgba(139, 92, 246, 0.6)' }
+        ? { fill: 'rgba(0, 0, 0, 0.12)', stroke: 'rgba(0, 0, 0, 0.3)' }
+        : { fill: 'rgba(255, 255, 255, 0.15)', stroke: 'rgba(255, 255, 255, 0.35)' }
     }
 
     function createParticle(x: number, y: number): Particle {

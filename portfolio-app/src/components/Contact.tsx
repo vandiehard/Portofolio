@@ -109,7 +109,7 @@ export default function Contact() {
               </div>
               <button type="submit" disabled={sending}
                 className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl text-white font-medium transition-all disabled:opacity-50"
-                style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent-2))' }}
+                style={{ background: 'var(--accent)', color: 'var(--surface)' }}
               >
                 {sending ? 'Sending...' : <><Send className="w-4 h-4" /> Send Message</>}
               </button>
@@ -198,7 +198,7 @@ export default function Contact() {
               </div>
               <button type="submit"
                 className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl text-white font-medium transition-all"
-                style={{ background: 'linear-gradient(135deg, var(--accent-2), var(--accent))' }}
+                style={{ background: 'var(--accent)', color: 'var(--surface)' }}
               >
                 <Send className="w-4 h-4" /> Post Comment
               </button>

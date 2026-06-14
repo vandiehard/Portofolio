@@ -78,15 +78,15 @@ export default function Hero() {
           <a
             href="#Projects"
             className="inline-flex items-center gap-2 px-8 py-3 rounded-lg font-medium transition-all duration-300 text-white"
-            style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent-2))' }}
+            style={{ background: 'var(--accent)', color: 'var(--surface)' }}
           >
             View Projects
             <ExternalLink className="w-4 h-4" />
           </a>
           <a
             href="#Contact"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border font-medium btn-glow transition-all duration-300"
-            style={{ borderColor: 'var(--accent)', color: 'var(--accent)' }}
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border font-medium transition-all duration-300"
+            style={{ borderColor: 'var(--surface-border)', color: 'var(--text)' }}
           >
             Contact Me
             <Mail className="w-4 h-4" />
