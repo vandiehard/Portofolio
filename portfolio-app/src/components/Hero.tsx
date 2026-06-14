@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { ExternalLink, Mail, ChevronDown } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from './SocialIcons'
+import AnimatedText from './AnimatedText'
 
 const typingTexts = ['Tech Enthusiast', 'Frontend Developer', 'Problem Solver']
 
@@ -46,9 +47,10 @@ export default function Hero() {
           Hello, I'm
         </p>
 
-        <h1 className="text-5xl md:text-7xl font-bold gradient-text mb-2 leading-tight">
-          Ahmad Syamsudin Ihsan
-        </h1>
+        <AnimatedText
+          text="Ahmad Syamsudin Ihsan"
+          className="text-5xl md:text-7xl font-bold gradient-text mb-2 leading-tight"
+        />
 
         <div className="h-10 flex items-center justify-center mb-6">
           <span className="text-xl md:text-2xl font-medium typing-cursor" style={{ color: 'var(--accent)' }}>
@@ -76,7 +78,7 @@ export default function Hero() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
           <a
-            href="#Projects"
+            href="#Gallery"
             className="inline-flex items-center gap-2 px-8 py-3 rounded-lg font-medium transition-all duration-300 text-white"
             style={{ background: 'var(--accent)', color: 'var(--surface)' }}
           >

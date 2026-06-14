@@ -208,15 +208,15 @@ export default function TechStack() {
   const [hovered, setHovered] = useState<string | null>(null)
 
   return (
-    <section id="TechStack" className="py-20 px-6">
+    <section id="Skills" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text)' }}>
-            Tech <span className="gradient-text-purple">Stack</span>
+            Skills & <span className="gradient-text-purple">Tech Stack</span>
           </h2>
           <p className="max-w-2xl mx-auto" style={{ color: 'var(--text-2)' }}>
-            Technologies I work with to build modern web applications.
+            Technologies and tools I use to build modern web applications.
           </p>
         </div>
 

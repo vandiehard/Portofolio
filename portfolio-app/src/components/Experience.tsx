@@ -14,11 +14,11 @@ const experiences = [
   },
   {
     type: 'work',
-    title: 'Web Development Intern',
-    organization: 'Tech Startup',
-    period: '2023 - 2024',
+    title: 'Programmer',
+    organization: 'Psichology Laboratory - Gunadarma University',
+    period: '2025 - Present',
     description: [
-      'Developed RESTful APIs using Flask and Python',
+      'Developed responsive frontend interfaces with React',
       'Created responsive frontend interfaces with React',
       'Participated in agile development processes',
     ],
@@ -27,7 +27,7 @@ const experiences = [
     type: 'education',
     title: 'B.S. Information Systems',
     organization: 'Gunadarma University',
-    period: '2021 - Present',
+    period: '2024 - Present',
     description: [
       'Strong focus on front-end development and web technologies',
       'Active participant in coding communities and hackathons',
@@ -38,7 +38,7 @@ const experiences = [
     type: 'education',
     title: 'Web Development Bootcamp',
     organization: 'Online Learning Platform',
-    period: '2023',
+    period: '2025',
     description: [
       'Intensive full-stack web development program',
       'Built multiple projects from concept to deployment',

@@ -6,8 +6,7 @@ const navLinks = [
   { name: 'Home', href: '#Home' },
   { name: 'About', href: '#About' },
   { name: 'Gallery', href: '#Gallery' },
-  { name: 'TechStack', href: '#TechStack' },
-  { name: 'Projects', href: '#Projects' },
+  { name: 'Skills', href: '#Skills' },
   { name: 'Experience', href: '#Experience' },
   { name: 'Contact', href: '#Contact' },
 ]
@@ -44,8 +43,10 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="#Home" className="font-bold text-xl" style={{ color: 'var(--accent)' }}>
-              Ree
+            <a href="#Home" className="font-bold text-xl logo-hover group" style={{ color: 'var(--accent)' }}>
+              <span className="inline-block transition-transform duration-200 group-hover:-translate-y-0.5">R</span>
+              <span className="inline-block transition-transform duration-200 delay-75 group-hover:-translate-y-1">e</span>
+              <span className="inline-block transition-transform duration-200 delay-150 group-hover:-translate-y-0.5">e</span>
             </a>
           </div>
 
@@ -56,7 +57,7 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setActive(link.name)}
-                className={`text-sm font-medium transition-colors pb-1 ${
+                className={`nav-link-animated text-sm font-medium transition-colors pb-1 ${
                   active === link.name
                     ? 'border-b-2'
                     : 'hover:opacity-80'

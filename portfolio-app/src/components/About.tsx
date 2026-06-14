@@ -1,26 +1,27 @@
 import { useState, useEffect } from 'react'
-import { Code, Server, Database, Wrench, Download, ArrowRight, X, Award, Globe } from 'lucide-react'
+import { Code, Server, Download, ArrowRight, X, Award, Globe } from 'lucide-react'
 import { TechLogo } from './TechLogos'
+import AnimatedText from './AnimatedText'
 
 const certificates = [
   {
-    title: 'React & Modern Web Development',
-    issuer: 'Online Learning Platform',
-    date: '2024',
+    title: 'Programmer Psychology Laboratory',
+    issuer: 'Gunadarma University',
+    date: '2025',
     skills: ['React', 'Hooks', 'State Management', 'TailwindCSS'],
     color: '#3b82f6',
   },
   {
     title: 'Python for Web Development',
     issuer: 'Online Bootcamp',
-    date: '2023',
+    date: '2024',
     skills: ['Python', 'Flask', 'Django', 'REST APIs'],
     color: '#10b981',
   },
   {
     title: 'Frontend Development Fundamentals',
     issuer: 'Certification Course',
-    date: '2023',
+    date: '2025',
     skills: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
     color: '#f59e0b',
   },
@@ -162,8 +163,8 @@ function CertificatesModal() {
 
 function ExperienceModal() {
   const items = [
-    { role: 'Frontend Developer', org: 'Freelance Projects', period: '2024 - Present', active: true },
-    { role: 'Web Development Intern', org: 'Tech Startup', period: '2023 - 2024', active: false },
+    { role: 'Frontend Developer', org: 'Freelance Projects', period: '2025 - Present', active: true },
+    { role: 'Programmer', org: 'Psichology Laboratory - Gunadarma University', period: '2025 - Present', active: true },
   ]
   return (
     <div>
@@ -190,13 +191,6 @@ function ExperienceModal() {
     </div>
   )
 }
-
-const skillCategories = [
-  { title: 'Frontend', icon: Code, skills: ['JavaScript', 'React', 'HTML5', 'CSS3', 'TailwindCSS'] },
-  { title: 'Backend', icon: Server, skills: ['Python', 'Flask', 'Django', 'Node.js'] },
-  { title: 'Database', icon: Database, skills: ['MySQL', 'PostgreSQL', 'SQLite'] },
-  { title: 'Tools', icon: Wrench, skills: ['Git', 'VS Code', 'Docker', 'Linux'] },
-]
 
 const stats = [
   { icon: Code, number: 6, label: 'TOTAL PROJECTS', desc: 'Innovative web solutions crafted', key: 'projects' },
@@ -260,7 +254,12 @@ export default function About() {
           {/* Bio */}
           <div>
             <p className="font-medium text-lg mb-1" style={{ color: 'var(--accent)' }}>Hello, I'm</p>
-            <h3 className="text-3xl font-bold mb-4" style={{ color: 'var(--text)' }}>Ahmad Syamsudin Ihsan</h3>
+            <AnimatedText
+              text="Ahmad Syamsudin Ihsan"
+              as="h3"
+              className="text-3xl font-bold mb-4"
+              style={{ color: 'var(--text)' }}
+            />
             <p className="leading-relaxed mb-4" style={{ color: 'var(--text-2)' }}>
               An Information Systems student at Gunadarma University with a strong interest in
               front-end development. Passionate about creating engaging digital experiences and
@@ -280,35 +279,6 @@ export default function About() {
               Download CV
             </a>
           </div>
-        </div>
-
-        {/* Skills Cards with Real Tech Logos */}
-        <h3 className="text-2xl font-bold text-center mb-8" style={{ color: 'var(--text)' }}>My Skills</h3>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-          {skillCategories.map(({ title, icon: Icon, skills }) => (
-            <div key={title} className="glass-card rounded-2xl p-6 transition-all duration-300 hover:scale-105 group"
-              onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--accent)')}
-              onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--surface-border)')}>
-              <div className="relative z-[1]">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 rounded-lg"
-                    style={{ background: 'color-mix(in srgb, var(--accent) 15%, transparent)', color: 'var(--accent)' }}>
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <h4 className="font-semibold" style={{ color: 'var(--text)' }}>{title}</h4>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {skills.map(skill => (
-                    <span key={skill} className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-sm font-medium"
-                      style={{ background: 'color-mix(in srgb, var(--accent) 8%, transparent)', color: 'var(--text-2)' }}>
-                      <TechLogo name={skill} size={20} />
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
 
         {/* Languages Section */}

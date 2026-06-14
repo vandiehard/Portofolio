@@ -280,3 +280,59 @@ body {
 .tech-card:hover .tech-label {
   color: var(--text);
 }
+
+/* Animated text - magnetic hover */
+.anim-text {
+  cursor: default;
+  display: inline-block;
+}
+.anim-text .anim-letter {
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+}
+/* Per-letter gradient for animated text */
+.anim-letter-gradient {
+  background: linear-gradient(to bottom, #ffffff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+:root.light .anim-letter-gradient {
+  background: linear-gradient(to bottom, #1a1a1a 0%, #4a4a4a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Nav link hover underline animation */
+.nav-link-animated {
+  position: relative;
+}
+.nav-link-animated::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link-animated:hover::after {
+  width: 100%;
+}
+
+/* Logo hover glow */
+.logo-hover:hover {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+}
+:root.light .logo-hover:hover {
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Section header hover - subtle letter spacing */
+.section-title {
+  transition: letter-spacing 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.section-title:hover {
+  letter-spacing: 0.02em;
+}
