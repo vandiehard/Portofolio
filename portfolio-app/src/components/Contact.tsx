@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { Send, User, Mail, MessageCircle, Upload } from 'lucide-react'
+import { useReveal } from '../hooks/useReveal'
 
 const socialCards = [
   {
@@ -36,6 +37,7 @@ export default function Contact() {
   const [comments, setComments] = useState<Comment[]>([])
   const [commentName, setCommentName] = useState('')
   const [commentMessage, setCommentMessage] = useState('')
+  const ref = useReveal()
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -65,24 +67,24 @@ export default function Contact() {
   }
 
   return (
-    <section id="Contact" className="py-20 px-6 grid-bg">
+    <section id="Contact" className="py-16 sm:py-20 px-4 sm:px-6 grid-bg" ref={ref}>
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold gradient-text-purple mb-4">Contact Me</h2>
+        <div className="text-center mb-12 sm:mb-16 reveal">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold gradient-text-purple mb-4">Contact Me</h2>
           <p className="max-w-xl mx-auto" style={{ color: 'var(--text-2)' }}>
             Have any questions? Send me a message and I'll respond promptly.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 mb-16">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
           {/* Contact Form */}
-          <div className="glass-card rounded-3xl p-8">
-            <h3 className="text-2xl font-bold mb-1" style={{ color: 'var(--accent)' }}>Contact</h3>
-            <p className="text-sm mb-6" style={{ color: 'var(--text-2)' }}>
+          <div className="glass-card rounded-3xl p-5 sm:p-8 reveal">
+            <h3 className="text-xl sm:text-2xl font-bold mb-1" style={{ color: 'var(--accent)' }}>Contact</h3>
+            <p className="text-xs sm:text-sm mb-5 sm:mb-6" style={{ color: 'var(--text-2)' }}>
               Have something to discuss? Send me a message and let's talk.
             </p>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
               <div className="relative">
                 <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: 'var(--accent)' }} />
                 <input type="text" required placeholder="Your Name" value={formData.name}
@@ -117,15 +119,15 @@ export default function Contact() {
           </div>
 
           {/* Social Cards */}
-          <div>
-            <div className="flex items-center gap-3 mb-6">
+          <div className="reveal">
+            <div className="flex items-center gap-3 mb-5 sm:mb-6">
               <div className="w-8 h-0.5 rounded-full" style={{ background: 'var(--accent)' }} />
-              <h3 className="text-xl font-bold" style={{ color: 'var(--text)' }}>Connect With Me</h3>
+              <h3 className="text-lg sm:text-xl font-bold" style={{ color: 'var(--text)' }}>Connect With Me</h3>
             </div>
 
             {/* LinkedIn */}
             <a href="https://linkedin.com/in/ahmadsyamsudinihsan" target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-3 glass-card rounded-xl p-4 mb-4 transition-all"
+              className="flex items-center gap-3 glass-card rounded-xl p-3 sm:p-4 mb-3 sm:mb-4 transition-all"
               onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--accent)')}
               onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--surface-border)')}
             >
@@ -139,10 +141,10 @@ export default function Contact() {
             </a>
 
             {/* Social Grid */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {socialCards.map(card => (
                 <a key={card.platform} href={card.href} target="_blank" rel="noopener noreferrer"
-                  className="glass-card rounded-xl p-4 transition-all duration-300"
+                  className="glass-card rounded-xl p-3 sm:p-4 transition-all duration-300"
                   onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--accent)')}
                   onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--surface-border)')}
                 >
@@ -162,16 +164,16 @@ export default function Contact() {
         </div>
 
         {/* Comments Section */}
-        <div className="max-w-2xl mx-auto">
-          <div className="glass-card rounded-3xl p-8">
+        <div className="max-w-2xl mx-auto reveal">
+          <div className="glass-card rounded-3xl p-5 sm:p-8">
             <div className="flex items-center gap-3 mb-6">
               <MessageCircle className="w-5 h-5" style={{ color: 'var(--accent)' }} />
-              <h3 className="text-xl font-bold" style={{ color: 'var(--text)' }}>
+              <h3 className="text-lg sm:text-xl font-bold" style={{ color: 'var(--text)' }}>
                 Comments ({comments.length})
               </h3>
             </div>
 
-            <form onSubmit={handleComment} className="space-y-4 mb-8">
+            <form onSubmit={handleComment} className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
               <div>
                 <label className="text-sm mb-1.5 block" style={{ color: 'var(--text)' }}>Name *</label>
                 <input type="text" required value={commentName} onChange={e => setCommentName(e.target.value)}

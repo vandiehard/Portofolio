@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useReveal } from '../hooks/useReveal'
 
 interface Tech {
   name: string
@@ -206,13 +207,14 @@ const techs: Tech[] = [
 
 export default function TechStack() {
   const [hovered, setHovered] = useState<string | null>(null)
+  const ref = useReveal()
 
   return (
-    <section id="Skills" className="py-20 px-6">
+    <section id="Skills" className="py-16 sm:py-20 px-4 sm:px-6" ref={ref}>
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text)' }}>
+        <div className="text-center mb-10 sm:mb-12 reveal">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text)' }}>
             Skills & <span className="gradient-text-purple">Tech Stack</span>
           </h2>
           <p className="max-w-2xl mx-auto" style={{ color: 'var(--text-2)' }}>
@@ -221,17 +223,17 @@ export default function TechStack() {
         </div>
 
         {/* Tech Grid */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-3 reveal-stagger">
           {techs.map(tech => (
             <div
               key={tech.name}
-              className="tech-card glass-card rounded-xl p-4 flex flex-col items-center gap-2 cursor-pointer relative"
+              className="reveal tech-card glass-card rounded-xl p-3 sm:p-4 flex flex-col items-center gap-1.5 sm:gap-2 cursor-pointer relative"
               onMouseEnter={() => setHovered(tech.name)}
               onMouseLeave={() => setHovered(null)}
             >
-              {/* Tooltip */}
+              {/* Tooltip - hidden on touch via CSS media query */}
               {hovered === tech.name && (
-                <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-20 px-3 py-2 rounded-lg text-xs whitespace-nowrap"
+                <div className="absolute -top-14 sm:-top-16 left-1/2 -translate-x-1/2 z-20 px-3 py-2 rounded-lg text-xs whitespace-nowrap hidden sm:block"
                   style={{
                     background: 'var(--surface-2)',
                     border: '1px solid var(--surface-border)',

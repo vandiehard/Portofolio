@@ -42,32 +42,32 @@ export default function Hero() {
 
   return (
     <section id="Home" className="min-h-screen flex items-center justify-center relative grid-bg pt-16">
-      <div className="max-w-4xl mx-auto px-6 py-20 text-center">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-20 text-center">
         <p className="font-medium text-lg mb-4 tracking-wide" style={{ color: 'var(--accent)' }}>
           Hello, I'm
         </p>
 
         <AnimatedText
           text="Ahmad Syamsudin Ihsan"
-          className="text-5xl md:text-7xl font-bold gradient-text mb-2 leading-tight"
+          className="text-3xl sm:text-5xl md:text-7xl font-bold gradient-text mb-2 leading-tight"
         />
 
-        <div className="h-10 flex items-center justify-center mb-6">
-          <span className="text-xl md:text-2xl font-medium typing-cursor" style={{ color: 'var(--accent)' }}>
+        <div className="h-8 sm:h-10 flex items-center justify-center mb-5 sm:mb-6">
+          <span className="text-lg sm:text-xl md:text-2xl font-medium typing-cursor" style={{ color: 'var(--accent)' }}>
             {displayText}
           </span>
         </div>
 
-        <p className="text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed" style={{ color: 'var(--text-2)' }}>
+        <p className="text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 sm:mb-8 leading-relaxed px-2" style={{ color: 'var(--text-2)' }}>
           Creating Innovative, Functional, and User-Friendly Websites for Digital Solutions.
         </p>
 
         {/* Tech tags */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8 sm:mb-10">
           {['React', 'Javascript', 'Node.js', 'Tailwind'].map(tech => (
             <span
               key={tech}
-              className="px-4 py-1.5 rounded-full text-sm font-medium"
+              className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium"
               style={{ background: 'var(--surface-card)', border: '1px solid var(--surface-border)', color: 'var(--text-2)' }}
             >
               {tech}
@@ -76,10 +76,10 @@ export default function Hero() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-12">
           <a
             href="#Gallery"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-lg font-medium transition-all duration-300 text-white"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-lg font-medium transition-all duration-300 btn-glow"
             style={{ background: 'var(--accent)', color: 'var(--surface)' }}
           >
             View Projects
@@ -87,7 +87,7 @@ export default function Hero() {
           </a>
           <a
             href="#Contact"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border font-medium transition-all duration-300"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-lg border font-medium transition-all duration-300"
             style={{ borderColor: 'var(--surface-border)', color: 'var(--text)' }}
           >
             Contact Me
@@ -96,7 +96,7 @@ export default function Hero() {
         </div>
 
         {/* Social Links */}
-        <div className="flex items-center justify-center gap-5">
+        <div className="flex items-center justify-center gap-4 sm:gap-5">
           {socials.map(({ icon: Icon, href, label, svg }) => (
             <a
               key={label}

@@ -39,7 +39,7 @@ export default function Navbar() {
         scrolled ? 'nav-glass shadow-lg' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
@@ -103,14 +103,17 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-4" style={{ borderTop: '1px solid var(--surface-border)' }}>
-            {navLinks.map(link => (
+          <div className="md:hidden pb-4 mobile-menu-enter" style={{ borderTop: '1px solid var(--surface-border)' }}>
+            {navLinks.map((link, i) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => { setActive(link.name); setIsOpen(false) }}
                 className="block py-3 text-sm font-medium transition-colors"
-                style={{ color: active === link.name ? 'var(--accent)' : 'var(--text-2)' }}
+                style={{
+                  color: active === link.name ? 'var(--accent)' : 'var(--text-2)',
+                  animationDelay: `${i * 40}ms`,
+                }}
               >
                 {link.name}
               </a>

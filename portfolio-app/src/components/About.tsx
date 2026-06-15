@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Code, Server, Download, ArrowRight, X, Award, Globe } from 'lucide-react'
 import { TechLogo } from './TechLogos'
 import AnimatedText from './AnimatedText'
+import { useReveal } from '../hooks/useReveal'
 
 const certificates = [
   {
@@ -201,25 +202,26 @@ const stats = [
 export default function About() {
   const [modal, setModal] = useState<string | null>(null)
   const [photoOpen, setPhotoOpen] = useState(false)
+  const ref = useReveal()
 
   return (
-    <section id="About" className="py-20 px-6 grid-bg">
+    <section id="About" className="py-16 sm:py-20 px-4 sm:px-6 grid-bg" ref={ref}>
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text)' }}>
+        <div className="text-center mb-12 sm:mb-16 reveal">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text)' }}>
             About <span className="gradient-text-purple">Me</span>
           </h2>
           <p className="italic" style={{ color: 'var(--text-2)' }}>Transforming ideas into digital experiences</p>
         </div>
 
         {/* Bio + Photo Row */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center mb-12 sm:mb-16">
           {/* Profile Photo - 4x6 Rectangular with Rounded Corners */}
-          <div className="flex justify-center">
+          <div className="flex justify-center reveal">
             <div className="relative group cursor-pointer" onClick={() => setPhotoOpen(true)}>
               {/* Outer glass frame */}
-              <div className="absolute -inset-4 rounded-3xl"
+              <div className="absolute -inset-3 sm:-inset-4 rounded-3xl"
                 style={{
                   background: 'var(--surface-card)',
                   border: '1px solid var(--surface-border)',
@@ -227,7 +229,7 @@ export default function About() {
                   WebkitBackdropFilter: 'blur(var(--glass-blur))',
                 }} />
               {/* Photo with glass overlay */}
-              <div className="relative w-64 h-96 md:w-72 md:h-[27rem] rounded-3xl overflow-hidden transition-transform duration-300 group-hover:scale-105"
+              <div className="relative w-52 h-80 sm:w-64 sm:h-96 md:w-72 md:h-[27rem] rounded-3xl overflow-hidden transition-transform duration-300 group-hover:scale-105"
                 style={{ border: '2px solid var(--surface-border)', boxShadow: '0 0 30px rgba(0, 0, 0, 0.3)' }}>
                 <img src="/profile.jpg" alt="Ahmad Syamsudin Ihsan"
                   className="w-full h-full object-cover" />
@@ -239,7 +241,7 @@ export default function About() {
                   }} />
               </div>
               {/* Decorative dashed frame */}
-              <div className="absolute -inset-7 rounded-[1.75rem] animate-spin-slow"
+              <div className="absolute -inset-5 sm:-inset-7 rounded-[1.75rem] animate-spin-slow hidden sm:block"
                 style={{ border: '1px dashed var(--surface-border)', opacity: 0.3 }} />
               {/* Click hint */}
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-3 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -252,12 +254,12 @@ export default function About() {
           </div>
 
           {/* Bio */}
-          <div>
-            <p className="font-medium text-lg mb-1" style={{ color: 'var(--accent)' }}>Hello, I'm</p>
+          <div className="reveal">
+            <p className="font-medium text-base sm:text-lg mb-1" style={{ color: 'var(--accent)' }}>Hello, I'm</p>
             <AnimatedText
               text="Ahmad Syamsudin Ihsan"
               as="h3"
-              className="text-3xl font-bold mb-4"
+              className="text-2xl sm:text-3xl font-bold mb-4"
               style={{ color: 'var(--text)' }}
             />
             <p className="leading-relaxed mb-4" style={{ color: 'var(--text-2)' }}>
@@ -282,13 +284,13 @@ export default function About() {
         </div>
 
         {/* Languages Section */}
-        <h3 className="text-2xl font-bold text-center mb-8" style={{ color: 'var(--text)' }}>
+        <h3 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 reveal" style={{ color: 'var(--text)' }}>
           <Globe className="inline w-6 h-6 mr-2" style={{ color: 'var(--accent)' }} />
           Languages
         </h3>
-        <div className="grid sm:grid-cols-3 gap-4 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-12 sm:mb-16 reveal-stagger">
           {languages.map(lang => (
-            <div key={lang.name} className="glass-card rounded-2xl p-6 text-center transition-all duration-300 hover:scale-105"
+            <div key={lang.name} className="reveal glass-card rounded-2xl p-5 sm:p-6 text-center transition-all duration-300 hover:scale-105"
               onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--accent)')}
               onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--surface-border)')}>
               <div className="relative z-[1]">
@@ -306,10 +308,10 @@ export default function About() {
         </div>
 
         {/* Stats - Clickable */}
-        <div className="grid sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 reveal-stagger">
           {stats.map(({ icon: Icon, number, label, desc, key }) => (
             <button key={label} onClick={() => setModal(key)}
-              className="glass-card rounded-2xl p-6 transition-all duration-300 group text-left cursor-pointer hover:scale-105"
+              className="reveal glass-card rounded-2xl p-5 sm:p-6 transition-all duration-300 group text-left cursor-pointer hover:scale-105"
               onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--accent)')}
               onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--surface-border)')}>
               <div className="relative z-[1]">

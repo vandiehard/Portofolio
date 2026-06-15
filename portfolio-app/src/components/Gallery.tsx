@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useReveal } from '../hooks/useReveal'
 
 interface GalleryItem {
   title: string
@@ -15,54 +16,55 @@ const galleryItems: GalleryItem[] = [
     title: 'E-Commerce Platform',
     description: 'Full-featured online store with cart, checkout, and payment integration.',
     tags: ['React', 'Django', 'MySQL'],
-    colSpan: 'col-span-2',
-    rowSpan: 'row-span-2',
+    colSpan: 'sm:col-span-2 md:col-span-2',
+    rowSpan: 'sm:row-span-2 md:row-span-2',
     gradient: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
   },
   {
     title: 'Task Management App',
     description: 'Kanban-style project management with drag-and-drop.',
     tags: ['React', 'Flask', 'MySQL'],
-    colSpan: 'col-span-1',
-    rowSpan: 'row-span-1',
+    colSpan: '',
+    rowSpan: '',
     gradient: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)',
   },
   {
     title: 'Weather Dashboard',
     description: 'Real-time weather with interactive maps.',
     tags: ['JavaScript', 'HTML', 'CSS'],
-    colSpan: 'col-span-1',
-    rowSpan: 'row-span-2',
+    colSpan: '',
+    rowSpan: 'sm:row-span-2 md:row-span-2',
     gradient: 'linear-gradient(135deg, #0a192f 0%, #112240 50%, #1d3461 100%)',
   },
   {
     title: 'Blog CMS',
     description: 'Content management with markdown support.',
     tags: ['Django', 'Python', 'MySQL'],
-    colSpan: 'col-span-1',
-    rowSpan: 'row-span-1',
+    colSpan: '',
+    rowSpan: '',
     gradient: 'linear-gradient(135deg, #1a1a1a 0%, #333333 100%)',
   },
   {
     title: 'Portfolio Website',
     description: 'Personal portfolio with dark/light theme and smooth animations.',
     tags: ['React', 'TailwindCSS'],
-    colSpan: 'col-span-2',
-    rowSpan: 'row-span-1',
+    colSpan: 'sm:col-span-2 md:col-span-2',
+    rowSpan: '',
     gradient: 'linear-gradient(135deg, #0d1117 0%, #161b22 50%, #21262d 100%)',
   },
   {
     title: 'REST API Service',
     description: 'Scalable API with auth and rate limiting.',
     tags: ['Flask', 'Python', 'MySQL'],
-    colSpan: 'col-span-1',
-    rowSpan: 'row-span-1',
+    colSpan: '',
+    rowSpan: '',
     gradient: 'linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%)',
   },
 ]
 
 export default function Gallery() {
   const [lightbox, setLightbox] = useState<number | null>(null)
+  const ref = useReveal()
 
   const closeLightbox = useCallback(() => setLightbox(null), [])
   const prev = useCallback(() => setLightbox(i => i !== null ? (i - 1 + galleryItems.length) % galleryItems.length : null), [])
@@ -84,11 +86,11 @@ export default function Gallery() {
   }, [lightbox, closeLightbox, prev, next])
 
   return (
-    <section id="Gallery" className="py-20 px-6 grid-bg">
+    <section id="Gallery" className="py-16 sm:py-20 px-4 sm:px-6 grid-bg" ref={ref}>
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text)' }}>
+        <div className="text-center mb-10 sm:mb-12 reveal">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text)' }}>
             Project <span className="gradient-text-purple">Gallery</span>
           </h2>
           <p className="max-w-2xl mx-auto" style={{ color: 'var(--text-2)' }}>
@@ -97,11 +99,11 @@ export default function Gallery() {
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[200px] gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 auto-rows-[200px] sm:auto-rows-[180px] md:auto-rows-[200px] gap-3">
           {galleryItems.map((item, index) => (
             <div
               key={item.title}
-              className={`${item.colSpan} ${item.rowSpan} group relative rounded-xl overflow-hidden cursor-pointer transition-all duration-300`}
+              className={`${item.colSpan} ${item.rowSpan} group relative rounded-xl overflow-hidden cursor-pointer transition-all duration-300 reveal`}
               style={{ border: '1px solid var(--surface-border)' }}
               onClick={() => setLightbox(index)}
               onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.16)')}
@@ -117,7 +119,7 @@ export default function Gallery() {
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
 
               {/* Content */}
-              <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-5">
+              <div className="absolute inset-0 flex flex-col justify-end p-3 sm:p-4 md:p-5">
                 <h3 className="font-bold text-sm md:text-base text-white mb-1 drop-shadow-lg">
                   {item.title}
                 </h3>
@@ -155,24 +157,24 @@ export default function Gallery() {
           {/* Prev */}
           <button
             onClick={e => { e.stopPropagation(); prev() }}
-            className="absolute left-4 md:left-8 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 transition"
+            className="absolute left-2 sm:left-8 z-10 p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 transition"
             style={{ color: 'white' }}
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           {/* Next */}
           <button
             onClick={e => { e.stopPropagation(); next() }}
-            className="absolute right-4 md:right-8 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 transition"
+            className="absolute right-2 sm:right-8 z-10 p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 transition"
             style={{ color: 'white' }}
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           {/* Content */}
           <div
-            className="relative max-w-3xl w-full mx-6 animate-slide-up"
+            className="relative max-w-3xl w-full mx-4 sm:mx-6 animate-slide-up"
             onClick={e => e.stopPropagation()}
           >
             <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
@@ -181,11 +183,11 @@ export default function Gallery() {
                 className="w-full aspect-video flex items-center justify-center"
                 style={{ background: galleryItems[lightbox].gradient }}
               >
-                <div className="text-center p-8">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                <div className="text-center p-4 sm:p-8">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3">
                     {galleryItems[lightbox].title}
                   </h3>
-                  <p className="text-white/60 text-sm md:text-base max-w-lg mx-auto mb-4">
+                  <p className="text-white/60 text-xs sm:text-sm md:text-base max-w-lg mx-auto mb-4">
                     {galleryItems[lightbox].description}
                   </p>
                   <div className="flex flex-wrap justify-center gap-2">
