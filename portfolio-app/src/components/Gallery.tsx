@@ -9,56 +9,63 @@ interface GalleryItem {
   colSpan: string
   rowSpan: string
   gradient: string
+  image: string
 }
 
 const galleryItems: GalleryItem[] = [
   {
-    title: 'E-Commerce Platform',
-    description: 'Full-featured online store with cart, checkout, and payment integration.',
-    tags: ['React', 'Django', 'MySQL'],
+    title: 'Blog CMS',
+    description: 'Content management system for bloggers with markdown support.',
+    tags: ['React', 'Next.js', 'TypeScript'],
     colSpan: 'sm:col-span-2 md:col-span-2',
     rowSpan: 'sm:row-span-2 md:row-span-2',
     gradient: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+    image: '/blog-cms.png',
   },
   {
     title: 'Task Management App',
-    description: 'Kanban-style project management with drag-and-drop.',
-    tags: ['React', 'Flask', 'MySQL'],
+    description: 'Task management app with project boards and task tracking.',
+    tags: ['HTML', 'Django', 'Sqlite'],
     colSpan: '',
     rowSpan: '',
     gradient: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)',
+    image: '/task-manager.png',
   },
   {
     title: 'Weather Dashboard',
-    description: 'Real-time weather with interactive maps.',
-    tags: ['JavaScript', 'HTML', 'CSS'],
+    description: 'Real-time weather dashboard with interactive maps.',
+    tags: ['JavaScript', 'React', 'CSS'],
     colSpan: '',
     rowSpan: 'sm:row-span-2 md:row-span-2',
     gradient: 'linear-gradient(135deg, #0a192f 0%, #112240 50%, #1d3461 100%)',
+    image: '/weather.png',
   },
   {
-    title: 'Blog CMS',
-    description: 'Content management with markdown support.',
-    tags: ['Django', 'Python', 'MySQL'],
+    title: 'E-Commerce Platform',
+    description: 'Full-featured e-commerce platform with cart, checkout, and payment integration.',
+    tags: ['React', 'JavaScript', 'MySQL'],
     colSpan: '',
     rowSpan: '',
     gradient: 'linear-gradient(135deg, #1a1a1a 0%, #333333 100%)',
+    image: '/ecommerce.png',
   },
   {
     title: 'Portfolio Website',
     description: 'Personal portfolio with dark/light theme and smooth animations.',
-    tags: ['React', 'TailwindCSS'],
+    tags: ['React', 'TailwindCSS', 'TypeScript'],
     colSpan: 'sm:col-span-2 md:col-span-2',
     rowSpan: '',
     gradient: 'linear-gradient(135deg, #0d1117 0%, #161b22 50%, #21262d 100%)',
+    image: '/portfolio.png',
   },
   {
     title: 'REST API Service',
     description: 'Scalable API with auth and rate limiting.',
-    tags: ['Flask', 'Python', 'MySQL'],
+    tags: ['FastAPI', 'Python', 'PostgreSQL'],
     colSpan: '',
     rowSpan: '',
     gradient: 'linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%)',
+    image: '/api-service.png',
   },
 ]
 
@@ -110,9 +117,10 @@ export default function Gallery() {
               onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--surface-border)')}
             >
               {/* Background gradient */}
-              <div
-                className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
-                style={{ background: item.gradient }}
+              <img
+                src={item.image}
+                alt={item.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
 
               {/* Hover overlay */}
@@ -178,25 +186,27 @@ export default function Gallery() {
             onClick={e => e.stopPropagation()}
           >
             <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
-              {/* Gradient preview */}
-              <div
-                className="w-full aspect-video flex items-center justify-center"
-                style={{ background: galleryItems[lightbox].gradient }}
-              >
-                <div className="text-center p-4 sm:p-8">
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3">
-                    {galleryItems[lightbox].title}
-                  </h3>
-                  <p className="text-white/60 text-xs sm:text-sm md:text-base max-w-lg mx-auto mb-4">
-                    {galleryItems[lightbox].description}
-                  </p>
-                  <div className="flex flex-wrap justify-center gap-2">
-                    {galleryItems[lightbox].tags.map(tag => (
-                      <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white/80">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+              {/* Image preview */}
+              <img
+                src={galleryItems[lightbox].image}
+                alt={galleryItems[lightbox].title}
+                className="w-full aspect-video object-cover"
+              />
+
+              {/* Info bar */}
+              <div className="p-4 sm:p-6" style={{ background: '#111' }}>
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                  {galleryItems[lightbox].title}
+                </h3>
+                <p className="text-white/60 text-xs sm:text-sm md:text-base mb-3">
+                  {galleryItems[lightbox].description}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {galleryItems[lightbox].tags.map(tag => (
+                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white/80">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
