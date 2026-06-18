@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { GithubIcon } from './SocialIcons'
 import { useReveal } from '../hooks/useReveal'
 
 interface GalleryItem {
@@ -10,13 +11,15 @@ interface GalleryItem {
   rowSpan: string
   gradient: string
   image: string
+  github: string
 }
 
 const galleryItems: GalleryItem[] = [
   {
     title: 'Blog CMS',
     description: 'Content management system for bloggers with markdown support.',
-    tags: ['React', 'Next.js', 'TypeScript'],
+    tags: ['React', 'Next.js', 'TypeScript', 'Tailwind'],
+    github: 'https://github.com/vandiehard/Blog-CMS',
     colSpan: 'sm:col-span-2 md:col-span-2',
     rowSpan: 'sm:row-span-2 md:row-span-2',
     gradient: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
@@ -25,7 +28,8 @@ const galleryItems: GalleryItem[] = [
   {
     title: 'Task Management App',
     description: 'Task management app with project boards and task tracking.',
-    tags: ['HTML', 'Django', 'Sqlite'],
+    tags: ['Python', 'Django', 'SQLite'],
+    github: 'https://github.com/vandiehard/Task-Management',
     colSpan: '',
     rowSpan: '',
     gradient: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)',
@@ -34,7 +38,8 @@ const galleryItems: GalleryItem[] = [
   {
     title: 'Weather Dashboard',
     description: 'Real-time weather dashboard with interactive maps.',
-    tags: ['JavaScript', 'React', 'CSS'],
+    tags: ['JavaScript', 'React', 'Tailwind'],
+    github: 'https://github.com/vandiehard/Weather-Dashboard',
     colSpan: '',
     rowSpan: 'sm:row-span-2 md:row-span-2',
     gradient: 'linear-gradient(135deg, #0a192f 0%, #112240 50%, #1d3461 100%)',
@@ -43,7 +48,8 @@ const galleryItems: GalleryItem[] = [
   {
     title: 'E-Commerce Platform',
     description: 'Full-featured e-commerce platform with cart, checkout, and payment integration.',
-    tags: ['React', 'JavaScript', 'MySQL'],
+    tags: ['React', 'Node.js', 'Express.js', 'PostgreSQL'],
+    github: 'https://github.com/vandiehard/E-Commerce',
     colSpan: '',
     rowSpan: '',
     gradient: 'linear-gradient(135deg, #1a1a1a 0%, #333333 100%)',
@@ -52,7 +58,8 @@ const galleryItems: GalleryItem[] = [
   {
     title: 'Portfolio Website',
     description: 'Personal portfolio with dark/light theme and smooth animations.',
-    tags: ['React', 'TailwindCSS', 'TypeScript'],
+    tags: ['React', 'TypeScript', 'Tailwind', 'Vite'],
+    github: 'https://github.com/vandiehard/Portofolio',
     colSpan: 'sm:col-span-2 md:col-span-2',
     rowSpan: '',
     gradient: 'linear-gradient(135deg, #0d1117 0%, #161b22 50%, #21262d 100%)',
@@ -61,7 +68,8 @@ const galleryItems: GalleryItem[] = [
   {
     title: 'REST API Service',
     description: 'Scalable API with auth and rate limiting.',
-    tags: ['FastAPI', 'Python', 'PostgreSQL'],
+    tags: ['FastAPI', 'Python', 'PostgreSQL', 'Docker'],
+    github: 'https://github.com/vandiehard/INVENTORY-API',
     colSpan: '',
     rowSpan: '',
     gradient: 'linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%)',
@@ -123,8 +131,11 @@ export default function Gallery() {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
 
+              {/* Dark gradient for text readability */}
+              <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
+
               {/* Hover overlay */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
 
               {/* Content */}
               <div className="absolute inset-0 flex flex-col justify-end p-3 sm:p-4 md:p-5">
@@ -134,13 +145,15 @@ export default function Gallery() {
                 <p className="text-xs text-white/0 group-hover:text-white/70 transition-all duration-300 line-clamp-2 drop-shadow">
                   {item.description}
                 </p>
-                {/* Tags */}
-                <div className="flex flex-wrap gap-1.5 mt-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                  {item.tags.map(tag => (
-                    <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-white/15 text-white/80 backdrop-blur-sm">
-                      {tag}
-                    </span>
-                  ))}
+                {/* Tags + GitHub */}
+                <div className="flex items-center gap-2 mt-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                  <div className="flex flex-wrap gap-1.5">
+                    {item.tags.map(tag => (
+                      <span key={tag} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-white/15 text-white/80 backdrop-blur-sm">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -201,12 +214,23 @@ export default function Gallery() {
                 <p className="text-white/60 text-xs sm:text-sm md:text-base mb-3">
                   {galleryItems[lightbox].description}
                 </p>
-                <div className="flex flex-wrap gap-2">
+                {/* Tags + GitHub */}
+                <div className="flex flex-wrap items-center gap-2">
                   {galleryItems[lightbox].tags.map(tag => (
                     <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white/80">
                       {tag}
                     </span>
                   ))}
+                  <a
+                    href={galleryItems[lightbox].github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-auto inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-white/10 hover:bg-white/20 text-white/80 transition"
+                    onClick={e => e.stopPropagation()}
+                  >
+                    <GithubIcon className="w-3.5 h-3.5" />
+                    GitHub
+                  </a>
                 </div>
               </div>
             </div>

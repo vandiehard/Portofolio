@@ -44,7 +44,7 @@ export default function Footer() {
           {/* Social */}
           <div className="flex justify-center gap-3 sm:gap-4">
             {[
-              { icon: GithubIcon, href: 'https://github.com/ree-ichi', label: 'GitHub' },
+              { icon: GithubIcon, href: 'https://github.com/vandiehard', label: 'GitHub' },
               { icon: LinkedinIcon, href: 'https://linkedin.com/in/ahmadsyamsudinihsan', label: 'LinkedIn' },
               { icon: Mail, href: 'mailto:radjaihsan321@gmail.com', label: 'Email' },
             ].map(({ icon: Icon, href, label }) => (

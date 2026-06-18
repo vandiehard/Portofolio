@@ -32,7 +32,7 @@ export default function Hero() {
   }, [charIndex, isDeleting, textIndex])
 
   const socials = [
-    { icon: GithubIcon, href: 'https://github.com/ree-ichi', label: 'GitHub' },
+    { icon: GithubIcon, href: 'https://github.com/vandiehard', label: 'GitHub' },
     { icon: LinkedinIcon, href: 'https://linkedin.com/in/ahmadsyamsudinihsan', label: 'LinkedIn' },
     {
       icon: null, href: 'https://instagram.com/syamsudinihsan_/', label: 'Instagram',
@@ -64,7 +64,7 @@ export default function Hero() {
 
         {/* Tech tags */}
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8 sm:mb-10">
-          {['React', 'Javascript', 'Node.js', 'Tailwind'].map(tech => (
+          {['React', 'JavaScript', 'Node.js', 'Tailwind'].map(tech => (
             <span
               key={tech}
               className="px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium"

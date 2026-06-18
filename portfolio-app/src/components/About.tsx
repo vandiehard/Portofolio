@@ -29,12 +29,12 @@ const certificates = [
 ]
 
 const projects = [
-  { title: 'E-Commerce Platform', tech: 'React, Django, MySQL', category: 'Full-Stack' },
-  { title: 'Task Management App', tech: 'React, Flask, MySQL', category: 'Full-Stack' },
-  { title: 'Weather Dashboard', tech: 'JavaScript, HTML, CSS', category: 'Frontend' },
-  { title: 'Blog CMS', tech: 'Django, Python, MySQL', category: 'Backend' },
-  { title: 'Portfolio Website', tech: 'React, TailwindCSS', category: 'Frontend' },
-  { title: 'REST API Service', tech: 'Flask, Python, MySQL', category: 'Backend' },
+  { title: 'E-Commerce Platform', tech: 'React, Node.js, Express.js, MySQL', category: 'Full-Stack' },
+  { title: 'Task Management App', tech: 'Python, Django, SQLite', category: 'Full-Stack' },
+  { title: 'Weather Dashboard', tech: 'JavaScript, React, TailwindCSS', category: 'Frontend' },
+  { title: 'Blog CMS', tech: 'React, Next.js, TypeScript, TailwindCSS', category: 'Full-Stack' },
+  { title: 'Portfolio Website', tech: 'React, TypeScript, TailwindCSS, Vite', category: 'Frontend' },
+  { title: 'REST API Service', tech: 'FastAPI, Python, PostgreSQL, Docker', category: 'Backend' },
 ]
 
 const languages = [
