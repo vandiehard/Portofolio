@@ -278,7 +278,7 @@ export default function About() {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all hover:opacity-90"
               style={{ background: 'var(--accent)', color: 'var(--surface)' }}>
               <Download className="w-4 h-4" />
-              Download CV
+              Lihat CV
             </a>
           </div>
         </div>
