@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import { Send, User, Mail, MessageCircle, Upload } from 'lucide-react'
+import { Send, User, Mail, MessageCircle, Globe, Server, Palette, Clock, Code2, Rocket, ArrowRight } from 'lucide-react'
 import { useReveal } from '../hooks/useReveal'
 
 const socialCards = [
@@ -29,14 +29,10 @@ const socialCards = [
   },
 ]
 
-interface Comment { name: string; message: string; date: string }
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [sending, setSending] = useState(false)
-  const [comments, setComments] = useState<Comment[]>([])
-  const [commentName, setCommentName] = useState('')
-  const [commentMessage, setCommentMessage] = useState('')
   const ref = useReveal()
 
   const handleSubmit = (e: FormEvent) => {
@@ -48,17 +44,6 @@ export default function Contact() {
     }, 1500)
   }
 
-  const handleComment = (e: FormEvent) => {
-    e.preventDefault()
-    if (commentName && commentMessage) {
-      setComments(prev => [
-        { name: commentName, message: commentMessage, date: new Date().toLocaleDateString() },
-        ...prev,
-      ])
-      setCommentName('')
-      setCommentMessage('')
-    }
-  }
 
   const inputStyle = {
     background: 'var(--surface-card)',
@@ -163,76 +148,83 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Comments Section */}
-        <div className="max-w-2xl mx-auto reveal">
-          <div className="glass-card rounded-3xl p-5 sm:p-8">
-            <div className="flex items-center gap-3 mb-6">
-              <MessageCircle className="w-5 h-5" style={{ color: 'var(--accent)' }} />
-              <h3 className="text-lg sm:text-xl font-bold" style={{ color: 'var(--text)' }}>
-                Comments ({comments.length})
+        {/* Let's Work Together */}
+        <div className="reveal">
+          <div className="glass-card rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden">
+            {/* Background glow */}
+            <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center top, color-mix(in srgb, var(--accent) 8%, transparent), transparent 70%)' }} />
+
+            <div className="relative">
+              {/* Status badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium mb-6" style={{ background: 'color-mix(in srgb, #22c55e 12%, transparent)', color: '#4ade80', border: '1px solid color-mix(in srgb, #22c55e 20%, transparent)' }}>
+                <span className="relative flex w-2 h-2">
+                  <span className="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping" style={{ background: '#22c55e' }} />
+                  <span className="relative inline-flex w-2 h-2 rounded-full" style={{ background: '#22c55e' }} />
+                </span>
+                Available for work
+              </div>
+
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3" style={{ color: 'var(--text)' }}>
+                Let's Build Something <span className="gradient-text-purple">Amazing</span>
               </h3>
-            </div>
+              <p className="max-w-lg mx-auto text-sm sm:text-base mb-8" style={{ color: 'var(--text-2)' }}>
+                I'm always excited to take on new projects. Whether it's a full web app, an API, or a quick fix — let's talk.
+              </p>
 
-            <form onSubmit={handleComment} className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
-              <div>
-                <label className="text-sm mb-1.5 block" style={{ color: 'var(--text)' }}>Name *</label>
-                <input type="text" required value={commentName} onChange={e => setCommentName(e.target.value)}
-                  placeholder="Enter your name"
-                  className="w-full px-4 py-3 rounded-xl focus:outline-none transition"
-                  style={{ ...inputStyle, '--placeholder-color': 'var(--text-3)' } as React.CSSProperties}
-                />
-              </div>
-              <div>
-                <label className="text-sm mb-1.5 block" style={{ color: 'var(--text)' }}>Message *</label>
-                <textarea required rows={3} value={commentMessage} onChange={e => setCommentMessage(e.target.value)}
-                  placeholder="Write your message here..."
-                  className="w-full px-4 py-3 rounded-xl focus:outline-none transition resize-none"
-                  style={inputStyle}
-                />
-              </div>
-              <div className="border-2 border-dashed rounded-xl p-4 text-center transition cursor-pointer"
-                style={{ borderColor: 'var(--surface-border)' }}>
-                <div className="flex items-center justify-center gap-2" style={{ color: 'var(--text-3)' }}>
-                  <Upload className="w-4 h-4" />
-                  <span className="text-sm">Choose Profile Photo</span>
-                </div>
-                <p className="text-xs mt-1" style={{ color: 'var(--text-3)' }}>Max file size: 5MB</p>
-              </div>
-              <button type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl text-white font-medium transition-all"
-                style={{ background: 'var(--accent)', color: 'var(--surface)' }}
-              >
-                <Send className="w-4 h-4" /> Post Comment
-              </button>
-            </form>
-
-            {comments.length === 0 ? (
-              <div className="text-center py-8">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3"
-                  style={{ background: 'color-mix(in srgb, var(--accent) 10%, transparent)' }}>
-                  <User className="w-8 h-8" style={{ color: 'var(--accent)', opacity: 0.4 }} />
-                </div>
-                <p className="text-sm" style={{ color: 'var(--text-3)' }}>No comments yet. Start the conversation!</p>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                {comments.map((comment, i) => (
-                  <div key={i} className="rounded-xl p-4" style={{ background: 'var(--surface-card)' }}>
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-8 h-8 rounded-full flex items-center justify-center"
-                        style={{ background: 'color-mix(in srgb, var(--accent) 20%, transparent)' }}>
-                        <User className="w-4 h-4" style={{ color: 'var(--accent)' }} />
-                      </div>
-                      <div>
-                        <p className="text-sm font-medium" style={{ color: 'var(--text)' }}>{comment.name}</p>
-                        <p className="text-xs" style={{ color: 'var(--text-3)' }}>{comment.date}</p>
-                      </div>
+              {/* Services */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-8 text-left">
+                {[
+                  { icon: Globe, title: 'Web Development', desc: 'Full-stack websites with React, Next.js, and Node.js.', color: '#61DAFB' },
+                  { icon: Server, title: 'API Development', desc: 'Scalable REST APIs with Express.js and MySQL.', color: '#339933' },
+                  { icon: Palette, title: 'UI/UX Design', desc: 'Clean, responsive interfaces with Tailwind CSS.', color: '#BD34FE' },
+                ].map(s => (
+                  <div key={s.title} className="rounded-xl p-4 transition-all group cursor-default"
+                    style={{ background: 'var(--surface-card)', border: '1px solid var(--surface-border)' }}
+                    onMouseEnter={e => (e.currentTarget.style.borderColor = s.color)}
+                    onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--surface-border)')}
+                  >
+                    <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-3" style={{ background: `color-mix(in srgb, ${s.color} 15%, transparent)` }}>
+                      <s.icon className="w-4.5 h-4.5" style={{ color: s.color }} />
                     </div>
-                    <p className="text-sm pl-10" style={{ color: 'var(--text-2)' }}>{comment.message}</p>
+                    <p className="font-semibold text-sm mb-1" style={{ color: 'var(--text)' }}>{s.title}</p>
+                    <p className="text-xs leading-relaxed" style={{ color: 'var(--text-3)' }}>{s.desc}</p>
                   </div>
                 ))}
               </div>
-            )}
+
+              {/* Stats */}
+              <div className="flex flex-wrap justify-center gap-6 sm:gap-10 mb-8">
+                {[
+                  { icon: Code2, value: '6+', label: 'Projects Built' },
+                  { icon: Rocket, value: '9+', label: 'Technologies' },
+                  { icon: Clock, value: '< 24h', label: 'Response Time' },
+                ].map(stat => (
+                  <div key={stat.label} className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'color-mix(in srgb, var(--accent) 10%, transparent)' }}>
+                      <stat.icon className="w-4 h-4" style={{ color: 'var(--accent)' }} />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-xl font-bold" style={{ color: 'var(--text)' }}>{stat.value}</p>
+                      <p className="text-xs" style={{ color: 'var(--text-3)' }}>{stat.label}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a href="#Gallery"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all"
+                  style={{ background: 'var(--accent)', color: 'var(--surface)' }}>
+                  View My Work <ArrowRight className="w-4 h-4" />
+                </a>
+                <a href="mailto:radjaihsan321@gmail.com"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border font-medium transition-all"
+                  style={{ borderColor: 'var(--surface-border)', color: 'var(--text)' }}>
+                  <Mail className="w-4 h-4" /> radjaihsan321@gmail.com
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
